@@ -81,6 +81,12 @@ Vapensystemet består av tre linjära nivåer:
   5:e osv. under en spelsession) genererar en Power-up-ikon som faller
   vertikalt nedåt över skärmen, dvs vapenuppgraderingarna kommer hälften så
   ofta som om varje tillfälle gav en Power-up.
+- Startfördröjning: När ett nytt spel startas skapas inga Power-ups under de
+  första 15 sekunderna av bana 1 (räknat från banans start), så att spelaren
+  flyger en stund med grundvapnet (Nivå 1). Tillfällen under spärrtiden ger
+  ingen Power-up och räknas inte in i cykeln. Därefter skapas Power-ups enligt
+  den normala cykeln (1:a, 3:e, 5:e tillfället osv.) under resten av spelet.
+  Spärren gäller enbart bana 1 på första varvet, inte bana 4, 7 osv.
 - Insamling: När spelarskeppets kollisionsbox vidrör ikonen räknas en
   Power-up (P) mot nästa vapennivå. Antalet P som krävs per nivå:
   * Nivå 1 -> Nivå 2 (Dubbelskott): 1 P, dvs uppgraderingen sker omedelbart.

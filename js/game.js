@@ -430,6 +430,9 @@
 
     /* Anropas vid varje power-up-tillfälle; endast vart N:e ger en power-up. */
     spawnPowerUp(x, y) {
+      // Spärrtid i början av bana 1 i ett nytt spel; spärrade tillfällen räknas inte
+      const firstStage = this.loop === 0 && this.stageIndex === 0;
+      if (firstStage && this.stageTime < C.POWERUP_START_DELAY) return;
       const n = this.powerUpChances++;
       if (n % C.POWERUP_DROP_INTERVAL !== 0) return;
       this.powerUps.push(new SH.PowerUp(x, y));
