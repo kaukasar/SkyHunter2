@@ -123,7 +123,9 @@ Bossarnas kanontorn (skottfrekvens):
 - Fästningen (bana 1): varje kanontorn skjuter ett riktat skott ca var 1,5:e
   sekund.
 - Moderskeppet (bana 3): varje kanontorn skjuter ett riktat dubbelskott ca var
-  1,625:e sekund (20 % lägre skottfrekvens än tidigare 1,3 s).
+  2,03:e sekund (20 % lägre skottfrekvens än tidigare 1,625 s, som i sin tur
+  sänktes från 1,3 s). Gäller Moderskeppet på bana 3 och på motsvarande bana
+  på senare varv (bana 6, 9 osv.).
 - Intervallen varierar slumpmässigt ±15 % per skott, och skottfrekvensen ökar
   med banans och varvets svårighetsgrad.
 

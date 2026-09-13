@@ -55,7 +55,7 @@
         { type: 'turret', ox: 56, oy: 36, r: 13, hp: 30 },
         { type: 'core', ox: 0, oy: 2, r: 24, hp: 120 },
       ],
-      turretInterval: 1.625,     // 20 % lägre skottfrekvens än tidigare 1.3 s
+      turretInterval: 2.03,      // 20 % lägre skottfrekvens än tidigare 1.625 s (som i sin tur sänktes från 1.3 s)
       turretSpread: 0.14,
       noseInterval: 2.6,
       corePattern: 'spiral',
