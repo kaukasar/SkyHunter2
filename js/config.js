@@ -31,10 +31,12 @@ SH.CONFIG = {
 
   // Power-ups
   POWERUP_FALL_SPEED: 85,
-  // Endast vart N:e tillfälle (vågledare/utplånad våg) genererar en power-up
-  POWERUP_DROP_INTERVAL: 2,
+  // Genomsnittligt antal power-up-tillfällen (vågledare/utplånad våg) mellan
+  // varje faktisk power-up. 8/3 ≈ vart 2,67:e tillfälle i snitt (25 % glesare
+  // än det tidigare värdet 2, dvs vartannat tillfälle).
+  POWERUP_DROP_INTERVAL: 8 / 3,
   // Inga power-ups de första N sekunderna av bana 1 när ett nytt spel startas
-  POWERUP_START_DELAY: 15,
+  POWERUP_START_DELAY: 10,
 
   // Tålighet: antal träffar innan en fiende sprängs
   ENEMY_HP: {

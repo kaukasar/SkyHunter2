@@ -151,7 +151,9 @@
       this.score = 0;
       this.lives = C.START_LIVES;
       this.nextExtend = C.EXTEND_FIRST;
-      this.powerUpChances = 0;
+      // Ackumulator för power-up-cykeln; startvärdet gör att det första
+      // ej spärrade tillfället alltid genererar en power-up.
+      this.powerUpAccum = C.POWERUP_DROP_INTERVAL;
       this.loop = this.startLoopParam;
       this.stageIndex = this.startStageParam;
       this.newHighScore = false;
@@ -428,13 +430,18 @@
       }
     }
 
-    /* Anropas vid varje power-up-tillfälle; endast vart N:e ger en power-up. */
+    /*
+     * Anropas vid varje power-up-tillfälle. Ett flyttalsackumulator ger i
+     * snitt en power-up var POWERUP_DROP_INTERVAL:e tillfälle (stödjer ett
+     * icke-heltaligt intervall, till skillnad från en enkel modulo-räknare).
+     */
     spawnPowerUp(x, y) {
       // Spärrtid i början av bana 1 i ett nytt spel; spärrade tillfällen räknas inte
       const firstStage = this.loop === 0 && this.stageIndex === 0;
       if (firstStage && this.stageTime < C.POWERUP_START_DELAY) return;
-      const n = this.powerUpChances++;
-      if (n % C.POWERUP_DROP_INTERVAL !== 0) return;
+      this.powerUpAccum += 1;
+      if (this.powerUpAccum < C.POWERUP_DROP_INTERVAL) return;
+      this.powerUpAccum -= C.POWERUP_DROP_INTERVAL;
       this.powerUps.push(new SH.PowerUp(x, y));
     }
 

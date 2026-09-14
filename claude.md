@@ -77,16 +77,18 @@ Vapensystemet består av tre linjära nivåer:
 
 4.3 Power-up-mekanik
 - Spawn-kriterium: Särskilt markerade fiender eller helt utplånade fiendevågor
-  utgör ett Power-up-tillfälle. Endast vartannat tillfälle (det 1:a, 3:e,
-  5:e osv. under en spelsession) genererar en Power-up-ikon som faller
-  vertikalt nedåt över skärmen, dvs vapenuppgraderingarna kommer hälften så
-  ofta som om varje tillfälle gav en Power-up.
+  utgör ett Power-up-tillfälle. I genomsnitt vart 2,67:e tillfälle genererar
+  en Power-up-ikon som faller vertikalt nedåt över skärmen (ett flyttals-
+  ackumulator styr exakt vilka tillfällen, så avståndet mellan två Power-ups
+  varierar något men snittar 2,67 tillfällen). Det är 25 % glesare än det
+  tidigare värdet (vartannat tillfälle).
 - Startfördröjning: När ett nytt spel startas skapas inga Power-ups under de
-  första 15 sekunderna av bana 1 (räknat från banans start), så att spelaren
+  första 10 sekunderna av bana 1 (räknat från banans start), så att spelaren
   flyger en stund med grundvapnet (Nivå 1). Tillfällen under spärrtiden ger
-  ingen Power-up och räknas inte in i cykeln. Därefter skapas Power-ups enligt
-  den normala cykeln (1:a, 3:e, 5:e tillfället osv.) under resten av spelet.
-  Spärren gäller enbart bana 1 på första varvet, inte bana 4, 7 osv.
+  ingen Power-up och räknas inte in i cykeln. Det första tillfället efter
+  spärrtiden genererar alltid en Power-up; därefter fortsätter den normala
+  cykeln (i snitt vart 2,67:e tillfälle) under resten av spelet. Spärren
+  gäller enbart bana 1 på första varvet, inte bana 4, 7 osv.
 - Insamling: När spelarskeppets kollisionsbox vidrör ikonen räknas en
   Power-up (P) mot nästa vapennivå. Antalet P som krävs per nivå:
   * Nivå 1 -> Nivå 2 (Dubbelskott): 1 P, dvs uppgraderingen sker omedelbart.
