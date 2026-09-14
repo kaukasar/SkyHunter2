@@ -41,6 +41,7 @@
       this.menuIndex = 0;
       this.banner = null;
       this.entry = null;
+      this.difficulty = 'normal'; // väljs på startskärmen
 
       this.resetWorld();
       this.setState('title');
@@ -241,7 +242,12 @@
       this.scrollSpeed = 60;
       if (this.bg.theme !== 'space') this.bg.setTheme('space');
       this.bg.update(dt, this.scrollSpeed);
-      if (this.stateTime > 0.3 && Input.wasPressed('confirm')) {
+      if (this.stateTime <= 0.3) return;
+      // Enter = Svår, Mellanslag (och övriga skjutknappar Z/K) = Normal
+      const hard = Input.codePressed('Enter') || Input.codePressed('NumpadEnter');
+      const normal = Input.wasPressed('fire');
+      if (hard || normal) {
+        this.difficulty = hard ? 'hard' : 'normal';
         Audio.play('select');
         this.newGame();
       }

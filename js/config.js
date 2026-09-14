@@ -41,10 +41,16 @@ SH.CONFIG = {
   // Tålighet: antal träffar innan en fiende sprängs
   ENEMY_HP: {
     basic: 2,
-    leader: 2,
+    leader: 4,
     heavyMultiplier: 5,       // banans grundvärde för tung fiende (3-5) x 5 = 15-25 träffar
   },
   BOSS_HP_MULTIPLIER: 1.5,      // gäller alla bossens moduler (kanontorn och kärna)
+  // Svårighetsgrader: global multipel på tåligheten. Väljs på startskärmen
+  // (Mellanslag = Normal, Enter = Svår).
+  DIFFICULTIES: {
+    normal: { label: 'NORMAL', enemyHp: 1, bossHp: 1 },
+    hard: { label: 'SVÅR', enemyHp: 1.5, bossHp: 1.25 },   // bas-, tung fiende och vågledare +50 %, bossmoduler +25 %
+  },
   // Slutvågssekvensen (bana 2): fiender som dyker upp under sekvensen tål mer
   FINAL_WAVE_HP_MULTIPLIER: 1.5,
 

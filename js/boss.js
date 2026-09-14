@@ -84,7 +84,7 @@
       this.dyingT = 0;
       this.boomT = 0;
 
-      const hpMul = game.diff.bossHp * C.BOSS_HP_MULTIPLIER;
+      const hpMul = game.diff.bossHp * C.BOSS_HP_MULTIPLIER * C.DIFFICULTIES[game.difficulty].bossHp;
       this.parts = def.parts.map((p) => Object.assign({}, p, {
         hp: Math.round(p.hp * hpMul),
         maxHp: Math.round(p.hp * hpMul),

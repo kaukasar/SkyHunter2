@@ -99,6 +99,9 @@
       text(ctx, U.pad(high, 7), W / 2, 24, { size: 16, stroke: '#000' });
       text(ctx, 'STAGE', W - 10, 10, { align: 'right', size: 10, color: '#6ad8ff' });
       text(ctx, String(game.stageNumber), W - 10, 24, { align: 'right', size: 16, stroke: '#000' });
+      if (game.difficulty === 'hard') {
+        text(ctx, C.DIFFICULTIES.hard.label, W - 10, 38, { align: 'right', size: 10, color: '#ff6a6a', stroke: '#000' });
+      }
 
       // Liv (ikoner)
       const lives = game.lives;
@@ -254,7 +257,10 @@
       text(ctx, U.pad(SH.HighScores.best(), 7), W / 2, 540, { size: 20, stroke: '#000' });
 
       if (blink(t, 1.6)) {
-        text(ctx, 'TRYCK ENTER ELLER MELLANSLAG FÖR ATT STARTA', W / 2, 584, { size: 13, color: '#ffffff', glow: '#3cc8ff' });
+        text(ctx, 'MELLANSLAG: STARTA NORMAL', W / 2, 574, { size: 13, color: '#ffffff', glow: '#3cc8ff' });
+      }
+      if (blink(t + 0.3, 1.6)) {
+        text(ctx, 'ENTER: STARTA SVÅR', W / 2, 596, { size: 13, color: '#ff8a8a', glow: '#ff3030' });
       }
       text(ctx, SH.Audio.isMuted() ? 'LJUD: AV' : 'LJUD: PÅ', W / 2, 620, { size: 10, color: '#6f8aa5' });
     },
@@ -289,7 +295,7 @@
       ctx.restore();
       text(ctx, 'SLUTPOÄNG', W / 2, 300, { size: 13, color: '#ffd24a' });
       text(ctx, U.pad(game.score, 7), W / 2, 328, { size: 30, stroke: '#000', strokeWidth: 4 });
-      text(ctx, 'NÅDDE STAGE ' + game.stageNumber, W / 2, 360, { size: 12, color: '#9fb3c6' });
+      text(ctx, 'NÅDDE STAGE ' + game.stageNumber + ' · ' + C.DIFFICULTIES[game.difficulty].label, W / 2, 360, { size: 12, color: '#9fb3c6' });
       if (game.newHighScore && blink(t, 3)) {
         text(ctx, 'NYTT HIGH SCORE!', W / 2, 400, { size: 22, color: '#ffe45c', glow: '#ffae00' });
       }

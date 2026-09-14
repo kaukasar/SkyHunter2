@@ -23,7 +23,9 @@ Systemet ska hantera följande tillstånd och övergångar:
                       +--> [Game Over] --> [High Score] --> [Startskärm]
 
 - Startskärm (Title Screen): Visar logotyp, instruktioner, aktuellt High Score
-  samt möjlighet att starta spelet via tangenttryck.
+  samt möjlighet att starta spelet via tangenttryck. Svårighetsgraden väljs
+  med startknappen: Mellanslag startar på Normal och Enter startar på Svår
+  (se 5.5).
 - Spelaktivt (Gameplay): Huvudloopen där fysik, kollisioner, fiendevågor och
   rendering uppdateras kontinuerligt.
 - Pausad (Paused): Fryser spelets uppdateringsloop vid användarinitierad paus
@@ -114,11 +116,12 @@ Fiendetyp      Beteende                            Hälsa     Skjuter  Power-up
 --------------------------------------------------------------------------------
 Basfiende      Flyger i fasta formationer          2 träffar Sällan   Nej
 Tung Fiende    Större skepp, rör sig långsamt      15-25     Ja       Nej
-Vågledare      Blinkande, uppträder i formation    2 träffar Nej      Ja (våg)
+Vågledare      Blinkande, uppträder i formation    4 träffar Nej      Ja (våg)
 Slutboss       Stort objekt med svaga punkter      Hög (x1.5)  Ja       Nej
 
 Tålighet (antal träffar innan fienden sprängs):
-- Basfiende och Vågledare: 2 träffar.
+- Basfiende: 2 träffar.
+- Vågledare: 4 träffar.
 - Tung Fiende: 5 gånger banans grundvärde 3-5, dvs 15-25 träffar. Grundvärdet
   styr fortfarande poängen (500 - 1 000).
 - Slutboss: Samtliga moduler (kanontorn och kärna) tål 1,5 gånger så många
@@ -168,12 +171,42 @@ Fienders rörelser styrs av fördefinierade banor (Paths):
   egen sekvens av vanliga fiender som inleds med varningen "SLUTVÅG!". Under
   och endast under denna sekvens tål samtliga fiender 50 % fler träffar
   (avrundat):
-  * Basfiende och Vågledare: 3 träffar (i stället för 2).
+  * Basfiende: 3 träffar (i stället för 2).
+  * Vågledare: 6 träffar (i stället för 4).
   * Tung Fiende: 30 träffar (i stället för 20).
   Poängen per fiende är oförändrad. Ökningen gäller fiender som dyker upp
   under sekvensen, på samtliga varv, och upphör när banan är avklarad.
+  Värdena ovan gäller Normal; på Svår multipliceras de dessutom (se 5.5).
 - Looping-mekanik: När sista banan klarats av startar spelet om från bana 1,
   men med ökad fiendehastighet och högre avfyrningsfrekvens från fienderna.
+
+5.5 Svårighetsgrader
+Spelet har två svårighetsgrader som väljs på startskärmen och gäller hela
+spelsessionen:
+- Normal (Mellanslag): Tåligheten enligt 5.2 och 5.4.
+- Svår (Enter): En global multipel på tåligheten:
+  * Basfiende, Vågledare och Tung Fiende: +50 %.
+  * Samtliga bossmoduler (kanontorn och kärna): +25 %.
+  Multipeln kombineras med övriga tålighetsfaktorer (slutvågssekvensen och
+  ökningen per varv). Produkten avrundas till heltal.
+- Ingen annan mekanik påverkas: fiendernas hastighet, skottfrekvens, poäng,
+  power-ups, liv och banstruktur är identiska på båda svårighetsgraderna.
+- På Svår visas "SVÅR" i HUD under banindikatorn, och svårighetsgraden visas
+  även på Game Over-skärmen. Topplistan är gemensam för båda graderna.
+
+Tålighet (antal träffar) per svårighetsgrad, första varvet:
+
+  Fiende / modul                     Normal     Svår
+  ------------------------------------------------------------------------------
+  Basfiende                          2          3
+  Vågledare                          4          6
+  Tung Fiende (grundvärde 3/4/5)     15/20/25   23/30/38
+  Slutvågssekvens, Basfiende         3          5
+  Slutvågssekvens, Vågledare         6          9
+  Slutvågssekvens, Tung Fiende       30         45
+  Fästningen, kanontorn / kärna      36 / 84    45 / 105
+  Moderskeppet, kanontorn            39 / 45    49 / 56
+  Moderskeppet, kärna                180        225
 
 
 6. KOLLISIONSHANTERING OCH LOGIK
@@ -231,6 +264,10 @@ Spelet styrs exklusivt via PC-tangentbord med följande kopplingar:
 
 - Paus / Meny:
   * P eller Escape
+
+- Starta spel (startskärmen):
+  * Mellanslag: Normal svårighetsgrad (Z och K fungerar likadant)
+  * Enter: Svår svårighetsgrad
 
 
 9. PRESTANDA OCH ICKE-FUNKTIONELLA KRAV

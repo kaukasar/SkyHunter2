@@ -144,7 +144,10 @@
       } else {
         this.hp = type.hp;
       }
-      if (game.finalWaveActive) this.hp = Math.round(this.hp * C.FINAL_WAVE_HP_MULTIPLIER);
+      // Global svårighetsgrad och ev. slutvågssekvens; avrundas en gång på produkten
+      let hpMul = C.DIFFICULTIES[game.difficulty].enemyHp;
+      if (game.finalWaveActive) hpMul *= C.FINAL_WAVE_HP_MULTIPLIER;
+      this.hp = Math.round(this.hp * hpMul);
       this.maxHp = this.hp;
       this.hw = type.hw;
       this.hh = type.hh;
